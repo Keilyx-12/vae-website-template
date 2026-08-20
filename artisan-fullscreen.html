@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Storefront - Artisan Theme</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen w-full flex flex-col md:flex-row bg-[#f5f0e1] text-zinc-900 overflow-hidden">
+    <!-- Left/Top Panel (Branding & Hero) -->
+    <div class="w-full md:w-2/5 flex flex-col justify-center items-center p-8 md:p-12 bg-gradient-to-br from-[#f5f0e1] to-[#ebe5d5] relative overflow-hidden">
+        <!-- Subtle background texture -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-orange-500 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-rose-500 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        
+        <div class="relative z-10 text-center">
+            <!-- Logo Placeholder -->
+            <div class="w-24 h-24 mx-auto mb-6 rounded-2xl bg-white/50 border-2 border-dashed border-orange-200 flex items-center justify-center p-3 text-[10px] text-orange-700 text-center backdrop-blur-sm">
+                [ LOGO / IMAGE HERE ]
+            </div>
+            
+            <!-- Business Name -->
+            <h1 class="text-3xl md:text-4xl font-bold text-zinc-900 mb-3 tracking-tight">[ BUSINESS NAME HERE ]</h1>
+            
+            <!-- Tagline -->
+            <p class="text-base text-zinc-600 mb-6 max-w-md mx-auto leading-relaxed">[ LOCATION / SHORT TAGLINE HERE ]</p>
+            
+            <!-- Status Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 border border-orange-200 text-sm text-zinc-700">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                [ STATUS / BADGE TEXT HERE ]
+            </div>
+        </div>
+    </div>
+    
+    <!-- Right/Bottom Panel (Interactive Content) -->
+    <div class="w-full md:w-3/5 flex flex-col bg-white/40 border-l border-orange-100 relative">
+        <!-- Category Tabs -->
+        <div class="p-6 border-b border-orange-100">
+            <div class="flex p-1 bg-white rounded-xl border border-orange-200 gap-1 max-w-md mx-auto">
+                <button 
+                    onclick="switchTab(1)" 
+                    id="tab-1"
+                    class="tab-active flex-1 py-2.5 text-sm font-semibold bg-orange-500 text-white text-center rounded-lg transition-all shadow-sm"
+                >
+                    [ CATEGORY 1 ]
+                </button>
+                <button 
+                    onclick="switchTab(2)" 
+                    id="tab-2"
+                    class="flex-1 py-2.5 text-sm font-medium text-zinc-500 text-center rounded-lg transition-all"
+                >
+                    [ CATEGORY 2 ]
+                </button>
+                <button 
+                    onclick="switchTab(3)" 
+                    id="tab-3"
+                    class="flex-1 py-2.5 text-sm font-medium text-zinc-500 text-center rounded-lg transition-all"
+                >
+                    [ CATEGORY 3 ]
+                </button>
+            </div>
+        </div>
+        
+        <!-- Service Cards (Scrollable Content) -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Category 1 Items -->
+            <div id="category-1" class="category-container">
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 1 ]', '[ PRICE 1 ]')"
+                    class="bg-white/60 border border-orange-100 rounded-2xl p-5 flex justify-between items-center hover:border-orange-500 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-zinc-900 group-hover:text-orange-600 transition-colors">[ ITEM / SERVICE NAME 1 ]</h3>
+                        <p class="text-sm text-zinc-500 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-orange-600 ml-4">[ PRICE 1 ]</div>
+                </div>
+                
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 2 ]', '[ PRICE 2 ]')"
+                    class="bg-white/60 border border-orange-100 rounded-2xl p-5 flex justify-between items-center hover:border-orange-500 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-zinc-900 group-hover:text-orange-600 transition-colors">[ ITEM / SERVICE NAME 2 ]</h3>
+                        <p class="text-sm text-zinc-500 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-orange-600 ml-4">[ PRICE 2 ]</div>
+                </div>
+                
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 3 ]', '[ PRICE 3 ]')"
+                    class="bg-white/60 border border-orange-100 rounded-2xl p-5 flex justify-between items-center hover:border-orange-500 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-zinc-900 group-hover:text-orange-600 transition-colors">[ ITEM / SERVICE NAME 3 ]</h3>
+                        <p class="text-sm text-zinc-500 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-orange-600 ml-4">[ PRICE 3 ]</div>
+                </div>
+            </div>
+            
+            <!-- Category 2 Items -->
+            <div id="category-2" class="category-container hidden">
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 4 ]', '[ PRICE 4 ]')"
+                    class="bg-white/60 border border-orange-100 rounded-2xl p-5 flex justify-between items-center hover:border-orange-500 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-zinc-900 group-hover:text-orange-600 transition-colors">[ ITEM / SERVICE NAME 4 ]</h3>
+                        <p class="text-sm text-zinc-500 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-orange-600 ml-4">[ PRICE 4 ]</div>
+                </div>
+                
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 5 ]', '[ PRICE 5 ]')"
+                    class="bg-white/60 border border-orange-100 rounded-2xl p-5 flex justify-between items-center hover:border-orange-500 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-zinc-900 group-hover:text-orange-600 transition-colors">[ ITEM / SERVICE NAME 5 ]</h3>
+                        <p class="text-sm text-zinc-500 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-orange-600 ml-4">[ PRICE 5 ]</div>
+                </div>
+            </div>
+            
+            <!-- Category 3 Items -->
+            <div id="category-3" class="category-container hidden">
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 6 ]', '[ PRICE 6 ]')"
+                    class="bg-white/60 border border-orange-100 rounded-2xl p-5 flex justify-between items-center hover:border-orange-500 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-zinc-900 group-hover:text-orange-600 transition-colors">[ ITEM / SERVICE NAME 6 ]</h3>
+                        <p class="text-sm text-zinc-500 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-orange-600 ml-4">[ PRICE 6 ]</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sticky CTA Bar -->
+        <div class="p-6 border-t border-orange-100 bg-white/80 backdrop-blur-md">
+            <div class="flex items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-sm text-zinc-500">[ Selected: 0 Items ]</div>
+                <button 
+                    onclick="sendToWhatsApp()"
+                    class="bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-3 rounded-xl transition-all shadow-lg shadow-orange-500/10 active:scale-95"
+                >
+                    [ WhatsApp Inquiry -> ]
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedItem = null;
+        let selectedPrice = null;
+        let selectedCount = 0;
+        
+        function switchTab(tabNumber) {
+            document.querySelectorAll('[id^="tab-"]').forEach(tab => {
+                tab.classList.remove('bg-orange-500', 'text-white', 'font-semibold', 'shadow-sm');
+                tab.classList.add('text-zinc-500', 'font-medium');
+            });
+            
+            document.querySelectorAll('.category-container').forEach(container => {
+                container.classList.add('hidden');
+            });
+            
+            const activeTab = document.getElementById(`tab-${tabNumber}`);
+            activeTab.classList.remove('text-zinc-500', 'font-medium');
+            activeTab.classList.add('bg-orange-500', 'text-white', 'font-semibold', 'shadow-sm');
+            
+            document.getElementById(`category-${tabNumber}`).classList.remove('hidden');
+            clearSelection();
+        }
+        
+        function selectItem(element, itemName, price) {
+            document.querySelectorAll('.bg-white\\/60').forEach(card => {
+                card.classList.remove('border-orange-500', 'bg-orange-50');
+                card.classList.add('border-orange-100');
+            });
+            
+            element.classList.remove('border-orange-100');
+            element.classList.add('border-orange-500', 'bg-orange-50');
+            
+            selectedItem = itemName;
+            selectedPrice = price;
+            selectedCount = 1;
+            updateSelectionCounter();
+        }
+        
+        function clearSelection() {
+            document.querySelectorAll('.bg-white\\/60').forEach(card => {
+                card.classList.remove('border-orange-500', 'bg-orange-50');
+                card.classList.add('border-orange-100');
+            });
+            selectedItem = null;
+            selectedPrice = null;
+            selectedCount = 0;
+            updateSelectionCounter();
+        }
+        
+        function updateSelectionCounter() {
+            const counterElement = document.querySelector('.text-sm.text-zinc-500');
+            if (selectedCount > 0) {
+                counterElement.textContent = `[ Selected: ${selectedCount} Item ]`;
+            } else {
+                counterElement.textContent = '[ Selected: 0 Items ]';
+            }
+        }
+        
+        function sendToWhatsApp() {
+            if (!selectedItem) {
+                alert('Please select an item first');
+                return;
+            }
+            
+            const phoneNumber = '60123456789';
+            const message = `Hi, I'm interested in ${selectedItem} (${selectedPrice}). Could you provide more details?`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>

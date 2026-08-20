@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Storefront - Cyber Theme</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen w-full flex flex-col md:flex-row bg-[#0a0a0f] text-zinc-100 overflow-hidden">
+    <!-- Left/Top Panel (Branding & Hero) -->
+    <div class="w-full md:w-2/5 flex flex-col justify-center items-center p-8 md:p-12 bg-gradient-to-br from-[#12121a] to-[#08080c] relative overflow-hidden">
+        <!-- Subtle background texture -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-sky-500 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        
+        <div class="relative z-10 text-center">
+            <!-- Logo Placeholder -->
+            <div class="w-24 h-24 mx-auto mb-6 rounded-2xl bg-zinc-800/50 border-2 border-dashed border-zinc-700 flex items-center justify-center p-3 text-[10px] text-zinc-500 text-center backdrop-blur-sm">
+                [ LOGO / IMAGE HERE ]
+            </div>
+            
+            <!-- Business Name -->
+            <h1 class="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">[ BUSINESS NAME HERE ]</h1>
+            
+            <!-- Tagline -->
+            <p class="text-base text-zinc-400 mb-6 max-w-md mx-auto leading-relaxed">[ LOCATION / SHORT TAGLINE HERE ]</p>
+            
+            <!-- Status Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-800/50 border border-zinc-700 text-sm text-zinc-300">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                [ STATUS / BADGE TEXT HERE ]
+            </div>
+        </div>
+    </div>
+    
+    <!-- Right/Bottom Panel (Interactive Content) -->
+    <div class="w-full md:w-3/5 flex flex-col bg-zinc-900/40 border-l border-zinc-800 relative">
+        <!-- Category Tabs -->
+        <div class="p-6 border-b border-zinc-800">
+            <div class="flex p-1 bg-zinc-900 rounded-xl border border-zinc-800 gap-1 max-w-md mx-auto">
+                <button 
+                    onclick="switchTab(1)" 
+                    id="tab-1"
+                    class="tab-active flex-1 py-2.5 text-sm font-semibold bg-sky-400 text-black text-center rounded-lg transition-all shadow-sm"
+                >
+                    [ CATEGORY 1 ]
+                </button>
+                <button 
+                    onclick="switchTab(2)" 
+                    id="tab-2"
+                    class="flex-1 py-2.5 text-sm font-medium text-zinc-400 text-center rounded-lg transition-all"
+                >
+                    [ CATEGORY 2 ]
+                </button>
+                <button 
+                    onclick="switchTab(3)" 
+                    id="tab-3"
+                    class="flex-1 py-2.5 text-sm font-medium text-zinc-400 text-center rounded-lg transition-all"
+                >
+                    [ CATEGORY 3 ]
+                </button>
+            </div>
+        </div>
+        
+        <!-- Service Cards (Scrollable Content) -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Category 1 Items -->
+            <div id="category-1" class="category-container">
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 1 ]', '[ PRICE 1 ]')"
+                    class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-5 flex justify-between items-center hover:border-sky-400 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-white group-hover:text-sky-400 transition-colors">[ ITEM / SERVICE NAME 1 ]</h3>
+                        <p class="text-sm text-zinc-400 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-sky-400 ml-4">[ PRICE 1 ]</div>
+                </div>
+                
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 2 ]', '[ PRICE 2 ]')"
+                    class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-5 flex justify-between items-center hover:border-sky-400 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-white group-hover:text-sky-400 transition-colors">[ ITEM / SERVICE NAME 2 ]</h3>
+                        <p class="text-sm text-zinc-400 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-sky-400 ml-4">[ PRICE 2 ]</div>
+                </div>
+                
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 3 ]', '[ PRICE 3 ]')"
+                    class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-5 flex justify-between items-center hover:border-sky-400 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-white group-hover:text-sky-400 transition-colors">[ ITEM / SERVICE NAME 3 ]</h3>
+                        <p class="text-sm text-zinc-400 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-sky-400 ml-4">[ PRICE 3 ]</div>
+                </div>
+            </div>
+            
+            <!-- Category 2 Items -->
+            <div id="category-2" class="category-container hidden">
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 4 ]', '[ PRICE 4 ]')"
+                    class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-5 flex justify-between items-center hover:border-sky-400 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-white group-hover:text-sky-400 transition-colors">[ ITEM / SERVICE NAME 4 ]</h3>
+                        <p class="text-sm text-zinc-400 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-sky-400 ml-4">[ PRICE 4 ]</div>
+                </div>
+                
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 5 ]', '[ PRICE 5 ]')"
+                    class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-5 flex justify-between items-center hover:border-sky-400 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-white group-hover:text-sky-400 transition-colors">[ ITEM / SERVICE NAME 5 ]</h3>
+                        <p class="text-sm text-zinc-400 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-sky-400 ml-4">[ PRICE 5 ]</div>
+                </div>
+            </div>
+            
+            <!-- Category 3 Items -->
+            <div id="category-3" class="category-container hidden">
+                <div 
+                    onclick="selectItem(this, '[ ITEM / SERVICE NAME 6 ]', '[ PRICE 6 ]')"
+                    class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-5 flex justify-between items-center hover:border-sky-400 transition-all cursor-pointer group"
+                >
+                    <div class="flex-1">
+                        <h3 class="text-base font-medium text-white group-hover:text-sky-400 transition-colors">[ ITEM / SERVICE NAME 6 ]</h3>
+                        <p class="text-sm text-zinc-400 mt-1">[ Short 1-line description of features ]</p>
+                    </div>
+                    <div class="text-lg font-bold text-sky-400 ml-4">[ PRICE 6 ]</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sticky CTA Bar -->
+        <div class="p-6 border-t border-zinc-800 bg-zinc-950/80 backdrop-blur-md">
+            <div class="flex items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-sm text-zinc-400">[ Selected: 0 Items ]</div>
+                <button 
+                    onclick="sendToWhatsApp()"
+                    class="bg-sky-400 hover:bg-sky-300 text-black font-bold text-sm px-6 py-3 rounded-xl transition-all shadow-lg shadow-sky-500/10 active:scale-95"
+                >
+                    [ WhatsApp Inquiry -> ]
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedItem = null;
+        let selectedPrice = null;
+        let selectedCount = 0;
+        
+        function switchTab(tabNumber) {
+            document.querySelectorAll('[id^="tab-"]').forEach(tab => {
+                tab.classList.remove('bg-sky-400', 'text-black', 'font-semibold', 'shadow-sm');
+                tab.classList.add('text-zinc-400', 'font-medium');
+            });
+            
+            document.querySelectorAll('.category-container').forEach(container => {
+                container.classList.add('hidden');
+            });
+            
+            const activeTab = document.getElementById(`tab-${tabNumber}`);
+            activeTab.classList.remove('text-zinc-400', 'font-medium');
+            activeTab.classList.add('bg-sky-400', 'text-black', 'font-semibold', 'shadow-sm');
+            
+            document.getElementById(`category-${tabNumber}`).classList.remove('hidden');
+            clearSelection();
+        }
+        
+        function selectItem(element, itemName, price) {
+            document.querySelectorAll('.bg-zinc-900\\/60').forEach(card => {
+                card.classList.remove('border-sky-400', 'bg-zinc-800');
+                card.classList.add('border-zinc-800/80');
+            });
+            
+            element.classList.remove('border-zinc-800/80');
+            element.classList.add('border-sky-400', 'bg-zinc-800');
+            
+            selectedItem = itemName;
+            selectedPrice = price;
+            selectedCount = 1;
+            updateSelectionCounter();
+        }
+        
+        function clearSelection() {
+            document.querySelectorAll('.bg-zinc-900\\/60').forEach(card => {
+                card.classList.remove('border-sky-400', 'bg-zinc-800');
+                card.classList.add('border-zinc-800/80');
+            });
+            selectedItem = null;
+            selectedPrice = null;
+            selectedCount = 0;
+            updateSelectionCounter();
+        }
+        
+        function updateSelectionCounter() {
+            const counterElement = document.querySelector('.text-sm.text-zinc-400');
+            if (selectedCount > 0) {
+                counterElement.textContent = `[ Selected: ${selectedCount} Item ]`;
+            } else {
+                counterElement.textContent = '[ Selected: 0 Items ]';
+            }
+        }
+        
+        function sendToWhatsApp() {
+            if (!selectedItem) {
+                alert('Please select an item first');
+                return;
+            }
+            
+            const phoneNumber = '60123456789';
+            const message = `Hi, I'm interested in ${selectedItem} (${selectedPrice}). Could you provide more details?`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
