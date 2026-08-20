@@ -27,6 +27,12 @@ reviews.html?preset=plumbing
 
 `showcase.html` links all of them.
 
+For a client who just wants to look at it — no server, no clone — run `python3 build-preview.py`.
+It regenerates `preview/index.html` and `preview/reviews.html` with the CSS, JS and favicon
+inlined, plus a niche/theme picker in the corner. Both files open straight off disk (or from a
+zip); keep them side by side so the links between the two pages keep working. They are generated
+output: edit `presets.js`, never `preview/`.
+
 ## Re-skinning for a new client
 
 1. In `config.js`, set `CLIENT` to the preset closest to the client's niche, then edit that

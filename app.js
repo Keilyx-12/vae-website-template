@@ -220,7 +220,8 @@ function renderBasket() {
   if (!count) {
     el.hint.textContent = labels.emptyHint || "Tap an item to start your order.";
   } else if (belowMinimum) {
-    el.hint.textContent = `Minimum order is ${money(CONFIG.minimumOrder)} — add ${money(
+    const scope = feeTotal() ? " before fees" : "";
+    el.hint.textContent = `Minimum order is ${money(CONFIG.minimumOrder)}${scope} — add ${money(
       CONFIG.minimumOrder - items
     )} more.`;
   } else {

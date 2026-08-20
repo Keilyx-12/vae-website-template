@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Digital Storefront</title>
+    <meta name="description" content="" data-meta-description>
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="" data-meta-title>
+    <meta property="og:description" content="" data-meta-description>
+    <meta property="og:image" content="" data-meta-image>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="" data-meta-title>
+    <meta name="twitter:description" content="" data-meta-description>
+    <meta name="twitter:image" content="" data-meta-image>
+
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwYTBhMGYiLz4KICA8cGF0aCBkPSJNMTggMjBoMjhsLTQgMjJhNCA0IDAgMCAxLTQgM0gyNmE0IDQgMCAwIDEtNC0zeiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMjUgMjBhNyA3IDAgMCAxIDE0IDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM4YmRmOCIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwYTBhMGYiLz4KICA8cGF0aCBkPSJNMTggMjBoMjhsLTQgMjJhNCA0IDAgMCAxLTQgM0gyNmE0IDQgMCAwIDEtNC0zeiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMjUgMjBhNyA3IDAgMCAxIDE0IDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM4YmRmOCIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==">
+    <style>
+/* Theme tokens: add a new client look by adding one [data-theme] block. */
+:root[data-theme="cyber"] {
+  color-scheme: dark;
+  --bg: #0a0a0f;
+  --hero-from: #12121a;
+  --hero-to: #08080c;
+  --panel: rgba(24, 24, 32, 0.4);
+  --surface: rgba(24, 24, 32, 0.6);
+  --surface-hover: rgba(39, 39, 48, 0.75);
+  --bar: rgba(9, 9, 13, 0.85);
+  --border: #27272f;
+  --border-strong: #3f3f4a;
+  --text: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --accent-text: #04121c;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --glow-a: #38bdf8;
+  --glow-b: #a855f7;
+  --radius: 16px;
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root[data-theme="luxe"] {
+  color-scheme: light;
+  --bg: #faf7f2;
+  --hero-from: #faf7f2;
+  --hero-to: #f2ece1;
+  --panel: rgba(255, 255, 255, 0.45);
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-hover: #ffffff;
+  --bar: rgba(255, 255, 255, 0.88);
+  --border: #e6dccb;
+  --border-strong: #cbbda3;
+  --text: #1c1917;
+  --text-muted: #6b6459;
+  --accent: #b48a3c;
+  --accent-hover: #9c742c;
+  --accent-text: #ffffff;
+  --accent-soft: rgba(180, 138, 60, 0.12);
+  --glow-a: #d4af37;
+  --glow-b: #8c6b2f;
+  --radius: 14px;
+  --font: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+}
+
+:root[data-theme="artisan"] {
+  color-scheme: light;
+  --bg: #f5f0e1;
+  --hero-from: #f7f2e4;
+  --hero-to: #ebe5d5;
+  --panel: rgba(255, 255, 255, 0.42);
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-hover: #ffffff;
+  --bar: rgba(255, 255, 255, 0.9);
+  --border: #e3d9c2;
+  --border-strong: #c9b894;
+  --text: #1f1b16;
+  --text-muted: #6a6152;
+  --accent: #c2410c;
+  --accent-hover: #9a3412;
+  --accent-text: #ffffff;
+  --accent-soft: rgba(194, 65, 12, 0.1);
+  --glow-a: #f97316;
+  --glow-b: #e11d48;
+  --radius: 18px;
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 20px 18px;
+  text-align: center;
+  background: linear-gradient(140deg, var(--hero-from), var(--hero-to));
+  overflow: hidden;
+}
+
+.hero__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.hero__glow::before,
+.hero__glow::after {
+  content: "";
+  position: absolute;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 9999px;
+  filter: blur(72px);
+}
+
+.hero__glow::before {
+  top: 0;
+  left: 0;
+  background: var(--glow-a);
+  transform: translate(-50%, -50%);
+}
+
+.hero__glow::after {
+  right: 0;
+  bottom: 0;
+  background: var(--glow-b);
+  transform: translate(50%, 50%);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 34rem;
+  min-width: 0;
+}
+
+.hero__logo {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  overflow: hidden;
+}
+
+.hero__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__name {
+  margin: 0;
+  font-size: clamp(1.4rem, 5vw, 2.4rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.hero__tagline {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.badge__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #10b981;
+}
+
+.badge[data-tone="closed"] .badge__dot {
+  background: #ef4444;
+}
+
+/* ---------- Catalogue panel ---------- */
+.panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 10px;
+  margin: 12px auto 0;
+  width: min(100%, 26rem);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  flex: 1 0 auto;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.tab[aria-selected="true"] {
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 700;
+}
+
+.catalogue {
+  flex: 1;
+  min-height: 0;
+  padding: 14px 16px 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card-list {
+  display: grid;
+  gap: 10px;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  user-select: none;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.12s ease;
+}
+
+.card:hover:not([data-sold-out]) {
+  border-color: var(--border-strong);
+  background: var(--surface-hover);
+}
+
+.card:has(.card__main:active) {
+  transform: scale(0.985);
+}
+
+.card[data-selected="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.card[data-sold-out] {
+  opacity: 0.45;
+}
+
+/* The card's own hit area — the stepper is a sibling, never nested inside it. */
+.card__main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card__main[disabled] {
+  cursor: not-allowed;
+}
+
+.card__aside {
+  display: flex;
+  align-items: center;
+  padding-right: 14px;
+}
+
+.card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.card__name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.card[data-selected="true"] .card__name {
+  color: var(--accent);
+}
+
+.card__desc {
+  margin: 3px 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.card__price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.card__check {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-strong);
+  color: var(--accent-text);
+  font-size: 0.7rem;
+}
+
+.card[data-selected="true"] .card__check {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Quantity stepper */
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  background: var(--bg);
+}
+
+.stepper__btn {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.stepper__btn:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.stepper__qty {
+  min-width: 20px;
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.empty {
+  padding: 28px 10px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Checkout bar ---------- */
+.checkout {
+  flex: 0 0 auto;
+  border-top: 1px solid var(--border);
+  background: var(--bar);
+  backdrop-filter: blur(12px);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+}
+
+.checkout__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.basket {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.basket__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.basket__lines {
+  display: grid;
+  gap: 6px;
+  max-height: 26vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 12px 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.basket__line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.basket__line--fee {
+  font-style: italic;
+}
+
+.checkout__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.summary {
+  min-width: 0;
+}
+
+.summary__count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.summary__total {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.12s ease;
+}
+
+.cta:hover:not([disabled]) {
+  background: var(--accent-hover);
+}
+
+.cta:active:not([disabled]) {
+  transform: scale(0.97);
+}
+
+.cta[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  min-height: 1rem;
+}
+
+.pop {
+  animation: pop 0.25s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Hero extras: rating pill + socials ---------- */
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.rating:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.rating__value {
+  font-variant-numeric: tabular-nums;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 1px;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.stars__star {
+  color: var(--border-strong);
+}
+
+.stars__star[data-on="true"] {
+  color: var(--accent);
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.social:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.social svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.socials--labelled .social {
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+}
+
+/* ---------- Reviews page ---------- */
+.hero--compact {
+  padding: 18px 20px;
+}
+
+.back {
+  align-self: flex-start;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--accent);
+}
+
+.reviews {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding: 16px;
+}
+
+.reviews__head {
+  flex: 0 0 auto;
+  max-width: 46rem;
+  width: 100%;
+  margin: 0 auto 14px;
+}
+
+.reviews__headline {
+  margin: 0;
+  font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+  letter-spacing: -0.01em;
+}
+
+.reviews__intro {
+  margin: 6px 0 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.score__value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.score__meta {
+  display: grid;
+  gap: 4px;
+}
+
+.score__count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.reviews__list {
+  display: grid;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  align-content: start;
+  max-width: 46rem;
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 2px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.review {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.review__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review__avatar {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.review__who {
+  flex: 1;
+  min-width: 0;
+}
+
+.review__name {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.review__meta,
+.review__source {
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.review__text {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.reviews__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 0 0 auto;
+  max-width: 46rem;
+  width: 100%;
+  margin: 14px auto 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.cta--link {
+  text-decoration: none;
+}
+
+/* ---------- Desktop split layout ---------- */
+@media (min-width: 768px) {
+  .app {
+    flex-direction: row;
+  }
+
+  .hero {
+    flex: 0 0 40%;
+    padding: 40px;
+    gap: 16px;
+  }
+
+  .reviews {
+    padding: 24px;
+  }
+
+  .hero__logo {
+    width: 88px;
+    height: 88px;
+    border-radius: 20px;
+    font-size: 1.6rem;
+  }
+
+  .panel {
+    flex: 1;
+    border-top: 0;
+    border-left: 1px solid var(--border);
+  }
+
+  .tabs {
+    margin-top: 20px;
+  }
+
+  .catalogue {
+    padding: 20px 24px 24px;
+  }
+
+  .checkout {
+    padding: 16px 24px;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <main class="app">
+        <!-- Branding -->
+        <header class="hero">
+            <div class="hero__glow" aria-hidden="true"></div>
+            <div class="hero__inner">
+                <div class="hero__logo" id="logo"></div>
+                <h1 class="hero__name" id="business-name"></h1>
+                <p class="hero__tagline" id="tagline"></p>
+                <div class="badge" id="status-badge">
+                    <span class="badge__dot" aria-hidden="true"></span>
+                    <span id="status-text"></span>
+                </div>
+                <div class="hero__meta">
+                    <a class="rating" id="rating-link" href="reviews.html" hidden></a>
+                    <div class="socials" id="socials" aria-label="Social links" hidden></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Catalogue -->
+        <section class="panel" aria-label="Menu">
+            <div class="tabs" id="tabs" role="tablist" aria-label="Categories"></div>
+            <div class="catalogue" id="catalogue"></div>
+
+            <!-- Checkout -->
+            <div class="checkout">
+                <div class="checkout__inner">
+                    <div class="basket" id="basket" hidden>
+                        <button type="button" class="basket__toggle" id="basket-toggle"
+                                aria-expanded="false" aria-controls="basket-lines">
+                            <span id="basket-label"></span>
+                            <span aria-hidden="true">View</span>
+                        </button>
+                        <div class="basket__lines" id="basket-lines" hidden></div>
+                    </div>
+
+                    <div class="checkout__row">
+                        <div class="summary">
+                            <div class="summary__count" id="count" aria-live="polite"></div>
+                            <div class="summary__total" id="total"></div>
+                        </div>
+                        <button type="button" class="cta" id="cta" disabled>
+                            Order on WhatsApp
+                            <span aria-hidden="true">&rarr;</span>
+                        </button>
+                    </div>
+
+                    <p class="hint" id="hint" aria-live="polite"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        .picker {
+            position: fixed; z-index: 50; top: 12px; right: 12px; display: flex; gap: 6px;
+            font: inherit;
+        }
+        .picker select {
+            appearance: none; padding: 7px 10px; border-radius: 9999px; cursor: pointer;
+            border: 1px solid var(--border); background: var(--surface); color: var(--text);
+            font-size: 0.75rem; font-family: inherit;
+        }
+        @media (max-width: 720px) { .picker { top: 8px; right: 8px; } }
+    </style>
+    <div class="picker">
+        <select id="pick-preset" aria-label="Example client"></select>
+        <select id="pick-theme" aria-label="Theme"></select>
+    </div>
+
+
+    <script>
+    /* ---- presets.js ---- */
+/*
+ * Example clients, one per niche. Nothing here is required by the code — they are
+ * starting points you copy and edit. Pick one in config.js (or preview any of them
+ * with ?preset=salon, ?preset=detailing, ...).
+ *
+ * Every preset has the same shape, so swapping niches never means touching app.js:
+ *   business / whatsapp / currency / fees / minimumOrder / categories / reviews / socials
+ *
+ * Prices are numbers, never strings, so totals can be calculated.
+ * Items priced from a survey or consultation use `price: 0` + `note`.
+ */
+const PRESETS = {
+  /* ---------------------------------------------------------------- salon */
+  salon: {
+    theme: "luxe",
+    business: {
+      name: "Studio Sora",
+      tagline: "Hair, nails & lashes — Damansara Uptown",
+      logo: "",
+      status: "Booking this week",
+      statusTone: "open",
+      pageTitle: "Studio Sora — Book on WhatsApp",
+      description: "Pick your services, see the total, then send the booking to us on WhatsApp.",
+      shareImage: "",
+    },
+    whatsapp: {
+      phone: "60123456789",
+      greeting: "Hi Studio Sora! I'd like to book:",
+      closing: "Which slots do you have this week?",
+    },
+    labels: {
+      cta: "Book on WhatsApp",
+      emptyHint: "Tap a service to start your booking.",
+      reviewsCta: "Ask us on WhatsApp",
+    },
+    currency: { symbol: "RM", locale: "en-MY", decimals: 2 },
+    fees: [],
+    minimumOrder: 0,
+    categories: [
+      {
+        id: "hair",
+        label: "Hair",
+        items: [
+          { id: "cut-style", name: "Cut & Style", desc: "Consultation, wash, blow dry", price: 65 },
+          { id: "root-touch", name: "Root Touch-Up", desc: "Single colour, up to 3cm", price: 130 },
+          { id: "balayage", name: "Balayage", desc: "Hand-painted, includes toner", price: 380 },
+          { id: "keratin", name: "Keratin Smoothing", desc: "Lasts 3–4 months", price: 450, available: false },
+        ],
+      },
+      {
+        id: "nails",
+        label: "Nails",
+        items: [
+          { id: "gel-mani", name: "Gel Manicure", desc: "Shape, cuticle care, one colour", price: 70 },
+          { id: "gel-pedi", name: "Gel Pedicure", desc: "Includes callus treatment", price: 90 },
+          { id: "nail-art", name: "Nail Art (per nail)", desc: "Chrome, French or freehand", price: 8 },
+        ],
+      },
+      {
+        id: "lashes",
+        label: "Lashes & Brows",
+        items: [
+          { id: "classic-lash", name: "Classic Lash Set", desc: "One extension per lash", price: 180 },
+          { id: "volume-lash", name: "Volume Lash Set", desc: "Fuller, 3D–5D fans", price: 250 },
+          { id: "brow-lam", name: "Brow Lamination", desc: "Includes shaping and tint", price: 120 },
+        ],
+      },
+    ],
+    reviews: {
+      headline: "What our clients say",
+      intro: "Collected from Google and WhatsApp with permission.",
+      rating: 4.9,
+      count: 214,
+      items: [
+        { name: "Nurul A.", service: "Balayage", rating: 5, date: "Mar 2025", source: "Google", text: "Third time here and the colour is always exactly what I asked for. They talk you out of anything that will not suit your hair, which I appreciate." },
+        { name: "Priya R.", service: "Volume Lash Set", rating: 5, date: "Feb 2025", source: "Google", text: "Two weeks in and barely any shedding. Booking over WhatsApp took about a minute." },
+        { name: "Chloe T.", service: "Gel Manicure", rating: 4, date: "Feb 2025", source: "WhatsApp", text: "Lovely work and very clean setup. Only note is that I waited ten minutes past my slot." },
+        { name: "Amira S.", service: "Cut & Style", rating: 5, date: "Jan 2025", source: "Google", text: "First salon that got the fringe right. The stylist explained how to style it at home." },
+      ],
+    },
+    socials: [
+      { label: "Instagram", url: "https://instagram.com/" },
+      { label: "TikTok", url: "https://tiktok.com/" },
+      { label: "Google", url: "https://maps.google.com/" },
+    ],
+  },
+
+  /* ----------------------------------------------------------------- cafe */
+  cafe: {
+    theme: "artisan",
+    business: {
+      name: "Kopi & Co.",
+      tagline: "Specialty coffee & bakes — Bangsar, Kuala Lumpur",
+      logo: "",
+      status: "Open daily 8am – 6pm",
+      statusTone: "open",
+      pageTitle: "Kopi & Co. — Order on WhatsApp",
+      description: "Browse the menu, then send your order straight to us on WhatsApp.",
+      shareImage: "",
+    },
+    whatsapp: {
+      phone: "60123456789",
+      greeting: "Hi Kopi & Co.! I'd like to order:",
+      closing: "Could you confirm availability and pickup time?",
+    },
+    currency: { symbol: "RM", locale: "en-MY", decimals: 2 },
+    fees: [{ label: "Packaging", amount: 1.5 }],
+    minimumOrder: 15,
+    categories: [
+      {
+        id: "drinks",
+        label: "Drinks",
+        items: [
+          { id: "latte", name: "Oat Latte", desc: "Double shot, house oat milk", price: 13.5 },
+          { id: "kopi-o", name: "Kopi O Kaw", desc: "Traditional black, no sugar option", price: 6 },
+          { id: "matcha", name: "Iced Matcha", desc: "Ceremonial grade, lightly sweetened", price: 15 },
+          { id: "cold-brew", name: "24h Cold Brew", desc: "Single origin, served over ice", price: 14, available: false },
+        ],
+      },
+      {
+        id: "bakes",
+        label: "Bakes",
+        items: [
+          { id: "croissant", name: "Butter Croissant", desc: "Baked fresh every morning", price: 8.5 },
+          { id: "kaya-toast", name: "Kaya Butter Toast", desc: "Charcoal bread, cold butter", price: 7 },
+          { id: "banana-loaf", name: "Banana Walnut Loaf", desc: "Thick slice, warmed on request", price: 9.5 },
+        ],
+      },
+      {
+        id: "beans",
+        label: "Beans",
+        items: [
+          { id: "house-blend", name: "House Blend 250g", desc: "Chocolate, hazelnut, low acidity", price: 42 },
+          { id: "single-origin", name: "Ethiopia Guji 250g", desc: "Floral, stone fruit, filter roast", price: 58 },
+        ],
+      },
+    ],
+    reviews: {
+      headline: "Regulars, in their own words",
+      intro: "Pulled from Google reviews and our WhatsApp orders.",
+      rating: 4.8,
+      count: 96,
+      items: [
+        { name: "Daniel L.", service: "Oat Latte", rating: 5, date: "Mar 2025", source: "Google", text: "Best oat latte in Bangsar and the WhatsApp ordering means it is ready when I walk in." },
+        { name: "Farah M.", service: "Kaya Butter Toast", rating: 5, date: "Mar 2025", source: "Google", text: "Charcoal bread with cold butter is exactly how it should be. Staff remember my usual." },
+        { name: "Wei Ken", service: "House Blend 250g", rating: 4, date: "Feb 2025", source: "WhatsApp", text: "Beans are consistently fresh. Would love a bigger bag option." },
+      ],
+    },
+    socials: [
+      { label: "Instagram", url: "https://instagram.com/" },
+      { label: "Facebook", url: "https://facebook.com/" },
+      { label: "Google", url: "https://maps.google.com/" },
+    ],
+  },
+
+  /* ------------------------------------------------------------ detailing */
+  detailing: {
+    theme: "cyber",
+    business: {
+      name: "Apex Detail",
+      tagline: "Mobile car detailing — Klang Valley, we come to you",
+      logo: "",
+      status: "Slots open Sat & Sun",
+      statusTone: "open",
+      pageTitle: "Apex Detail — Book on WhatsApp",
+      description: "Choose your packages and add-ons, then send the job to us on WhatsApp.",
+      shareImage: "",
+    },
+    whatsapp: {
+      phone: "60123456789",
+      greeting: "Hi Apex Detail! I'd like to book:",
+      closing: "My car is a __ and I'm in __ . Which slots are free?",
+    },
+    labels: {
+      cta: "Book on WhatsApp",
+      emptyHint: "Tap a package to start your booking.",
+      reviewsCta: "Get a quote on WhatsApp",
+    },
+    currency: { symbol: "RM", locale: "en-MY", decimals: 2 },
+    fees: [{ label: "Callout (Klang Valley)", amount: 20 }],
+    minimumOrder: 80,
+    categories: [
+      {
+        id: "packages",
+        label: "Packages",
+        items: [
+          { id: "express", name: "Express Wash", desc: "Foam wash, wheels, dry — 45 min", price: 80 },
+          { id: "interior", name: "Interior Deep Clean", desc: "Vacuum, shampoo, panels — 3 hrs", price: 260 },
+          { id: "full-detail", name: "Full Detail", desc: "Inside and out, decontamination — 6 hrs", price: 520 },
+          { id: "ceramic", name: "Ceramic Coating 2yr", desc: "Paint correction included — 2 days", price: 1800, available: false },
+        ],
+      },
+      {
+        id: "addons",
+        label: "Add-ons",
+        items: [
+          { id: "engine-bay", name: "Engine Bay Clean", desc: "Degrease and dress", price: 90 },
+          { id: "headlight", name: "Headlight Restoration", desc: "Per pair, sealed after", price: 150 },
+          { id: "pet-hair", name: "Pet Hair Removal", desc: "Extra pass on all fabric", price: 60 },
+          { id: "leather", name: "Leather Conditioning", desc: "Clean and feed all seats", price: 120 },
+        ],
+      },
+    ],
+    reviews: {
+      headline: "Recent jobs, rated by owners",
+      intro: "Every review below is from a completed booking.",
+      rating: 4.9,
+      count: 143,
+      items: [
+        { name: "Hafiz Z.", service: "Full Detail", rating: 5, date: "Mar 2025", source: "Google", text: "Turned up on time, took photos before and after, and the swirl marks on my black paint are gone." },
+        { name: "Sam O.", service: "Interior Deep Clean", rating: 5, date: "Feb 2025", source: "Google", text: "Two kids and a dog later, the cabin smells new again. Worth the three hours." },
+        { name: "Rajesh K.", service: "Express Wash", rating: 4, date: "Feb 2025", source: "WhatsApp", text: "Quick and tidy. Ran about 20 minutes late but messaged me ahead." },
+      ],
+    },
+    socials: [
+      { label: "Instagram", url: "https://instagram.com/" },
+      { label: "TikTok", url: "https://tiktok.com/" },
+      { label: "YouTube", url: "https://youtube.com/" },
+    ],
+  },
+
+  /* --------------------------------------------------------------- aircon */
+  aircon: {
+    theme: "cyber",
+    business: {
+      name: "CoolWorks Aircond",
+      tagline: "Servicing, repairs & installation — 7 days a week",
+      logo: "",
+      status: "Same-day slots available",
+      statusTone: "open",
+      pageTitle: "CoolWorks Aircond — Request a job on WhatsApp",
+      description: "Select the units and work you need, then send the job list to us on WhatsApp.",
+      shareImage: "",
+    },
+    whatsapp: {
+      phone: "60123456789",
+      greeting: "Hi CoolWorks! I'd like to request:",
+      closing: "Address is __ . When can a technician come?",
+    },
+    labels: {
+      cta: "Request on WhatsApp",
+      emptyHint: "Tap the work you need — per unit.",
+      reviewsCta: "Book a technician on WhatsApp",
+    },
+    currency: { symbol: "RM", locale: "en-MY", decimals: 2 },
+    fees: [{ label: "Transport", amount: 30 }],
+    minimumOrder: 100,
+    categories: [
+      {
+        id: "servicing",
+        label: "Servicing",
+        items: [
+          { id: "normal-wash", name: "Normal Service (per unit)", desc: "Filter, blower and drain clean", price: 80 },
+          { id: "chemical-wash", name: "Chemical Wash (per unit)", desc: "Coil chemical treatment", price: 160 },
+          { id: "chemical-overhaul", name: "Chemical Overhaul (per unit)", desc: "Full dismantle and deep clean", price: 320 },
+          { id: "gas-top-up", name: "Gas Top-Up (R32)", desc: "Includes leak check", price: 180 },
+        ],
+      },
+      {
+        id: "repairs",
+        label: "Repairs",
+        items: [
+          { id: "diagnosis", name: "Fault Diagnosis", desc: "Waived if you proceed with the repair", price: 60 },
+          { id: "water-leak", name: "Water Leak Fix", desc: "Drainage line clear and reseal", price: 150 },
+          { id: "capacitor", name: "Capacitor / PCB Replacement", desc: "Part quoted after diagnosis", price: 250 },
+          { id: "compressor", name: "Compressor Replacement", desc: "1–1.5HP, parts and labour", price: 900, available: false },
+        ],
+      },
+      {
+        id: "installation",
+        label: "Installation",
+        items: [
+          { id: "install-1hp", name: "Install 1.0–1.5HP", desc: "Up to 5m piping, wall bracket", price: 450 },
+          { id: "install-2hp", name: "Install 2.0–2.5HP", desc: "Up to 5m piping, wall bracket", price: 650 },
+          { id: "relocate", name: "Relocate Existing Unit", desc: "Dismantle, reinstall, vacuum", price: 550 },
+          { id: "extra-piping", name: "Extra Piping (per metre)", desc: "Insulated copper", price: 55 },
+        ],
+      },
+    ],
+    reviews: {
+      headline: "Rated by homeowners and offices",
+      intro: "Recent jobs across Klang Valley.",
+      rating: 4.7,
+      count: 308,
+      items: [
+        { name: "Mrs. Lim", service: "Chemical Overhaul", rating: 5, date: "Mar 2025", source: "Google", text: "Two bedroom units were barely cooling. Technician showed me the dirt from the coils and the difference that night was obvious." },
+        { name: "Aizat H.", service: "Install 2.0–2.5HP", rating: 5, date: "Feb 2025", source: "Google", text: "Clean piping work, no mess left behind, and the quote on WhatsApp was the final price." },
+        { name: "Office Manager, Sunway", service: "Normal Service", rating: 4, date: "Feb 2025", source: "WhatsApp", text: "Serviced eight units in one morning. Would prefer a slightly earlier start time." },
+        { name: "Kevin T.", service: "Water Leak Fix", rating: 5, date: "Jan 2025", source: "Google", text: "Came the same day I messaged. Leak sorted in under an hour." },
+      ],
+    },
+    socials: [
+      { label: "Facebook", url: "https://facebook.com/" },
+      { label: "Instagram", url: "https://instagram.com/" },
+      { label: "Google", url: "https://maps.google.com/" },
+    ],
+  },
+
+  /* ------------------------------------------------------------- plumbing */
+  plumbing: {
+    theme: "luxe",
+    business: {
+      name: "Ratna Plumbing",
+      tagline: "Licensed plumber — 24 hour emergency callout",
+      logo: "",
+      status: "On call now",
+      statusTone: "open",
+      pageTitle: "Ratna Plumbing — Request a plumber on WhatsApp",
+      description: "Tell us what needs fixing and send the job list straight to WhatsApp.",
+      shareImage: "",
+    },
+    whatsapp: {
+      phone: "60123456789",
+      greeting: "Hi Ratna Plumbing! I need help with:",
+      closing: "Address is __ . How soon can someone come?",
+    },
+    labels: {
+      cta: "Request a plumber",
+      emptyHint: "Tap what needs fixing.",
+      reviewsCta: "Request a plumber on WhatsApp",
+    },
+    currency: { symbol: "RM", locale: "en-MY", decimals: 2 },
+    fees: [{ label: "Callout", amount: 50 }],
+    minimumOrder: 0,
+    categories: [
+      {
+        id: "urgent",
+        label: "Urgent",
+        items: [
+          { id: "burst-pipe", name: "Burst Pipe", desc: "Isolate, repair, pressure test", price: 220 },
+          { id: "blocked-drain", name: "Blocked Drain", desc: "Rodding or jetting, per point", price: 180 },
+          { id: "no-water", name: "No Water Supply", desc: "Trace fault, pump and tank check", price: 150 },
+          { id: "afterhours", name: "After-Hours Callout", desc: "10pm – 7am, added to the job", price: 120 },
+        ],
+      },
+      {
+        id: "repairs",
+        label: "Repairs",
+        items: [
+          { id: "leaking-tap", name: "Leaking Tap / Mixer", desc: "Reseal or cartridge swap", price: 90 },
+          { id: "toilet-repair", name: "Running Toilet", desc: "Flush valve and seal", price: 120 },
+          { id: "water-heater", name: "Water Heater Repair", desc: "Element or thermostat", price: 200 },
+          { id: "pump-service", name: "Water Pump Service", desc: "Clean, reprime, adjust pressure", price: 250 },
+        ],
+      },
+      {
+        id: "installation",
+        label: "Installation",
+        items: [
+          { id: "install-tap", name: "Supply & Install Mixer Tap", desc: "Standard basin or sink", price: 260 },
+          { id: "install-heater", name: "Install Water Heater", desc: "Instant type, existing point", price: 380 },
+          { id: "install-toilet", name: "Install Toilet Bowl", desc: "Remove old unit included", price: 420 },
+          { id: "repipe", name: "Full Re-Pipe Survey", desc: "Priced after site visit", price: 0, note: "Quoted after survey" },
+        ],
+      },
+    ],
+    reviews: {
+      headline: "Trusted by neighbours nearby",
+      intro: "Reviews from jobs completed in the last few months.",
+      rating: 4.8,
+      count: 176,
+      items: [
+        { name: "Suraya B.", service: "Burst Pipe", rating: 5, date: "Mar 2025", source: "Google", text: "Messaged at 11pm with water everywhere. Someone arrived within the hour and stayed until it was dry." },
+        { name: "Mr. Chong", service: "Blocked Drain", rating: 5, date: "Feb 2025", source: "Google", text: "Cleared a blockage two other plumbers gave up on, then explained how to avoid it happening again." },
+        { name: "Divya N.", service: "Install Water Heater", rating: 4, date: "Jan 2025", source: "WhatsApp", text: "Neat installation and fair price. Had to wait two days for the appointment." },
+      ],
+    },
+    socials: [
+      { label: "WhatsApp", url: "https://wa.me/60123456789" },
+      { label: "Facebook", url: "https://facebook.com/" },
+      { label: "Google", url: "https://maps.google.com/" },
+    ],
+  },
+};
+
+    /* ---- config.js ---- */
+/*
+ * The only file you edit for a new client.
+ *
+ * Fastest path: pick the preset closest to the client's niche below, then open
+ * presets.js and edit that entry (or paste it here and edit it in place).
+ *
+ * Available: "salon" | "cafe" | "detailing" | "aircon" | "plumbing"
+ * Preview any of them without editing: index.html?preset=detailing&theme=cyber
+ */
+const CLIENT = "salon";
+
+/* Own client? Replace the line below with your own object — same shape as any preset. */
+const requestedPreset = new URLSearchParams(location.search).get("preset");
+const CONFIG = PRESETS[requestedPreset] || PRESETS[CLIENT];
+
+    /* ---- shared.js ---- */
+/*
+ * Shared by the storefront and the reviews page: branding, socials, ratings,
+ * formatting. No business data lives in this file.
+ */
+const params = new URLSearchParams(location.search);
+
+/* Keep ?theme= / ?preset= when moving between pages so previews stay consistent. */
+function withParams(href) {
+  const query = params.toString();
+  return query ? `${href}?${query}` : href;
+}
+
+function money(amount) {
+  const { symbol, locale, decimals } = CONFIG.currency;
+  return `${symbol}${amount.toLocaleString(locale, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  })}`;
+}
+
+function initials(name) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0].toUpperCase())
+    .join("");
+}
+
+function resolveTheme() {
+  const requested = params.get("theme");
+  const themes = ["cyber", "luxe", "artisan"];
+  return themes.includes(requested) ? requested : CONFIG.theme;
+}
+
+/* ---------- social icons ---------- */
+
+/* Simple monochrome glyphs so no icon font or CDN is needed. */
+const SOCIAL_PATHS = {
+  instagram:
+    "M12 2.2c-2.7 0-3 0-4.1.1-1 0-1.7.2-2.3.4-.6.3-1.1.6-1.6 1.1S3.2 4.9 3 5.5c-.2.6-.4 1.3-.4 2.3C2.5 9 2.5 9.3 2.5 12s0 3 .1 4.1c0 1 .2 1.7.4 2.3.3.6.6 1.1 1.1 1.6s1 .8 1.6 1.1c.6.2 1.3.4 2.3.4 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c1 0 1.7-.2 2.3-.4.6-.3 1.1-.6 1.6-1.1s.8-1 1.1-1.6c.2-.6.4-1.3.4-2.3.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c0-1-.2-1.7-.4-2.3-.3-.6-.6-1.1-1.1-1.6s-1-.8-1.6-1.1c-.6-.2-1.3-.4-2.3-.4C15 2.2 14.7 2.2 12 2.2zm0 1.8c2.7 0 2.9 0 4 .1.8 0 1.2.2 1.5.3.4.1.7.3 1 .6.3.3.5.6.6 1 .1.3.3.7.3 1.5.1 1.1.1 1.3.1 4s0 2.9-.1 4c0 .8-.2 1.2-.3 1.5-.1.4-.3.7-.6 1-.3.3-.6.5-1 .6-.3.1-.7.3-1.5.3-1.1.1-1.3.1-4 .1s-2.9 0-4-.1c-.8 0-1.2-.2-1.5-.3-.4-.1-.7-.3-1-.6-.3-.3-.5-.6-.6-1-.1-.3-.3-.7-.3-1.5-.1-1.1-.1-1.3-.1-4s0-2.9.1-4c0-.8.2-1.2.3-1.5.1-.4.3-.7.6-1 .3-.3.6-.5 1-.6.3-.1.7-.3 1.5-.3 1.1-.1 1.3-.1 4-.1zm0 3.1a4.9 4.9 0 100 9.8 4.9 4.9 0 000-9.8zm0 8a3.1 3.1 0 110-6.2 3.1 3.1 0 010 6.2zm6.3-8.2a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z",
+  facebook:
+    "M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.6V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.3H7.6V13h2.7v8h3.2z",
+  tiktok:
+    "M16.6 2h-2.8v12.2a2.4 2.4 0 11-2.4-2.4c.3 0 .5 0 .7.1V9c-.2 0-.5-.1-.7-.1a5.2 5.2 0 105.2 5.2V8.4c1 .8 2.3 1.3 3.7 1.3V6.9a3.7 3.7 0 01-3.7-3.7V2z",
+  youtube:
+    "M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15.2V8.8L15.5 12 10 15.2z",
+  google:
+    "M21.4 10.2h-9v3.6h5.2a5.3 5.3 0 01-5.2 3.9 5.7 5.7 0 110-11.4c1.4 0 2.7.5 3.7 1.4l2.6-2.6A9.4 9.4 0 0012.4 2.5a9.5 9.5 0 100 19c5.3 0 9.1-3.7 9.1-9 0-.8-.1-1.5-.1-2.3z",
+  whatsapp:
+    "M12 2a9.9 9.9 0 00-8.5 15L2 22l5.1-1.4A9.9 9.9 0 1012 2zm0 1.8a8.1 8.1 0 11-4.2 15l-.3-.2-3 .8.8-2.9-.2-.3A8.1 8.1 0 0112 3.8zm-3.6 4c-.2 0-.5.1-.7.4-.3.3-.9 1-.9 2s.7 2 1 2.4c.3.4 1.8 2.9 4.5 3.9 2.2.9 2.7.7 3.2.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3l-1.8-.9c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 01-3.3-2.9c-.1-.2 0-.4.1-.5l.6-.7c.1-.2.2-.3.1-.5l-.8-1.8c-.2-.4-.4-.4-.5-.4h-.1z",
+  website:
+    "M12 2.5a9.5 9.5 0 100 19 9.5 9.5 0 000-19zm0 1.8c1.2 0 2.4 1.7 3 4.2H9c.6-2.5 1.8-4.2 3-4.2zM7.2 8.5H4.9A7.8 7.8 0 019.3 4.7 10 10 0 007.2 8.5zm-2.9 1.8h2.5a17 17 0 000 3.4H4.3a7.7 7.7 0 010-3.4zm4.3 0h6.8a15 15 0 010 3.4H8.6a15 15 0 010-3.4zm8.6 0h2.5a7.7 7.7 0 010 3.4h-2.5a17 17 0 000-3.4zm-.4-1.8a10 10 0 00-2.1-3.8 7.8 7.8 0 014.4 3.8h-2.3zM9 15.5h6c-.6 2.5-1.8 4.2-3 4.2s-2.4-1.7-3-4.2zm-1.8 0a10 10 0 002.1 3.8 7.8 7.8 0 01-4.4-3.8h2.3zm7.5 3.8a10 10 0 002.1-3.8h2.3a7.8 7.8 0 01-4.4 3.8z",
+};
+
+function socialIcon(label) {
+  const key = label.toLowerCase().replace(/[^a-z]/g, "");
+  const path = SOCIAL_PATHS[key] || SOCIAL_PATHS.website;
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  const shape = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  shape.setAttribute("d", path);
+  svg.append(shape);
+  return svg;
+}
+
+function renderSocials(container, options = {}) {
+  if (!container) return;
+  const socials = CONFIG.socials || [];
+  container.hidden = socials.length === 0;
+  container.replaceChildren(
+    ...socials.map((social) => {
+      const link = document.createElement("a");
+      link.className = "social";
+      link.href = social.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", `${CONFIG.business.name} on ${social.label}`);
+      link.append(socialIcon(social.label));
+      if (options.showLabels) {
+        const text = document.createElement("span");
+        text.className = "social__label";
+        text.textContent = social.label;
+        link.append(text);
+      }
+      return link;
+    })
+  );
+}
+
+/* ---------- reviews ---------- */
+
+function stars(rating) {
+  const wrap = document.createElement("span");
+  wrap.className = "stars";
+  wrap.setAttribute("role", "img");
+  wrap.setAttribute("aria-label", `${rating} out of 5`);
+  for (let i = 1; i <= 5; i += 1) {
+    const star = document.createElement("span");
+    star.className = "stars__star";
+    star.dataset.on = String(i <= Math.round(rating));
+    star.textContent = "★";
+    wrap.append(star);
+  }
+  return wrap;
+}
+
+/* Rating pill in the hero, linking through to the reviews page. */
+function renderRatingLink(container) {
+  const reviews = CONFIG.reviews;
+  if (!container) return;
+  if (!reviews || !reviews.rating) {
+    container.hidden = true;
+    return;
+  }
+  container.hidden = false;
+  container.href = withParams("reviews.html");
+  container.replaceChildren(
+    stars(reviews.rating),
+    Object.assign(document.createElement("span"), {
+      className: "rating__value",
+      textContent: reviews.count
+        ? `${reviews.rating} · ${reviews.count} reviews`
+        : String(reviews.rating),
+    })
+  );
+}
+
+/* ---------- branding ---------- */
+
+function applyBranding() {
+  const { business } = CONFIG;
+  document.documentElement.dataset.theme = resolveTheme();
+  document.title = business.pageTitle || business.name;
+
+  const set = (id, text) => {
+    const node = document.getElementById(id);
+    if (node) node.textContent = text || "";
+  };
+  set("business-name", business.name);
+  set("tagline", business.tagline);
+  set("status-text", business.status);
+
+  const badge = document.getElementById("status-badge");
+  if (badge) {
+    badge.dataset.tone = business.statusTone || "open";
+    badge.hidden = !business.status;
+  }
+
+  const logo = document.getElementById("logo");
+  if (logo) {
+    if (business.logo) {
+      const img = document.createElement("img");
+      img.src = business.logo;
+      img.alt = `${business.name} logo`;
+      logo.replaceChildren(img);
+    } else {
+      logo.textContent = initials(business.name);
+    }
+  }
+
+  document.querySelectorAll("[data-meta-description]").forEach((tag) => {
+    tag.setAttribute("content", business.description || business.tagline);
+  });
+  document.querySelectorAll("[data-meta-title]").forEach((tag) => {
+    tag.setAttribute("content", business.pageTitle || business.name);
+  });
+  if (business.shareImage) {
+    document.querySelectorAll("[data-meta-image]").forEach((tag) => {
+      tag.setAttribute("content", business.shareImage);
+    });
+  }
+
+  document.querySelectorAll("[data-keep-params]").forEach((link) => {
+    link.href = withParams(link.getAttribute("href"));
+  });
+}
+
+function whatsappLink(message) {
+  const phone = String(CONFIG.whatsapp.phone).replace(/\D/g, "");
+  if (!phone) return "";
+  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+}
+
+    /* ---- app.js ---- */
+/*
+ * Rendering + basket state. No business data lives in this file.
+ */
+/* Scoped per business so previewing another preset never inherits its basket. */
+const STORAGE_KEY = `vae-basket-v1:${CONFIG.business.name}`;
+const basket = new Map(); // itemId -> quantity
+
+const el = {
+  socials: document.getElementById("socials"),
+  rating: document.getElementById("rating-link"),
+  tabs: document.getElementById("tabs"),
+  catalogue: document.getElementById("catalogue"),
+  basket: document.getElementById("basket"),
+  basketToggle: document.getElementById("basket-toggle"),
+  basketLabel: document.getElementById("basket-label"),
+  basketLines: document.getElementById("basket-lines"),
+  count: document.getElementById("count"),
+  total: document.getElementById("total"),
+  cta: document.getElementById("cta"),
+  hint: document.getElementById("hint"),
+};
+
+const labels = CONFIG.labels || {};
+
+const itemIndex = new Map();
+CONFIG.categories.forEach((category) =>
+  category.items.forEach((item) => itemIndex.set(item.id, { ...item, category: category.label }))
+);
+
+/* ---------- helpers ---------- */
+
+function feeTotal() {
+  return (CONFIG.fees || []).reduce((sum, fee) => sum + fee.amount, 0);
+}
+
+function itemsTotal() {
+  let sum = 0;
+  basket.forEach((qty, id) => {
+    sum += itemIndex.get(id).price * qty;
+  });
+  return sum;
+}
+
+function itemCount() {
+  let sum = 0;
+  basket.forEach((qty) => {
+    sum += qty;
+  });
+  return sum;
+}
+
+/* ---------- rendering ---------- */
+
+function renderTabs() {
+  el.tabs.replaceChildren(
+    ...CONFIG.categories.map((category, index) => {
+      const tab = document.createElement("button");
+      tab.type = "button";
+      tab.className = "tab";
+      tab.id = `tab-${category.id}`;
+      tab.setAttribute("role", "tab");
+      tab.textContent = category.label;
+      tab.setAttribute("aria-selected", String(index === 0));
+      tab.setAttribute("aria-controls", `panel-${category.id}`);
+      tab.tabIndex = index === 0 ? 0 : -1;
+      tab.addEventListener("click", () => selectCategory(category.id));
+      return tab;
+    })
+  );
+  el.tabs.addEventListener("keydown", onTabKeydown);
+}
+
+function card(item) {
+  const selected = basket.has(item.id);
+  const soldOut = item.available === false;
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "card";
+  wrapper.dataset.itemId = item.id;
+  wrapper.dataset.selected = String(selected);
+  if (soldOut) {
+    wrapper.dataset.soldOut = "true";
+  }
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "card__main";
+  button.setAttribute("aria-pressed", String(selected));
+  button.disabled = soldOut;
+
+  const body = document.createElement("div");
+  body.className = "card__body";
+  const name = document.createElement("h3");
+  name.className = "card__name";
+  name.textContent = soldOut ? `${item.name} — sold out` : item.name;
+  body.append(name);
+  if (item.desc) {
+    const desc = document.createElement("p");
+    desc.className = "card__desc";
+    desc.textContent = item.desc;
+    body.append(desc);
+  }
+
+  const price = document.createElement("span");
+  price.className = item.price ? "card__price" : "card__price card__price--quote";
+  price.textContent = item.price ? money(item.price) : item.note || "On quote";
+
+  button.append(body, price);
+  button.addEventListener("click", () => toggleItem(item.id));
+
+  const aside = document.createElement("div");
+  aside.className = "card__aside";
+  aside.append(selected ? stepper(item) : check());
+
+  wrapper.append(button, aside);
+  return wrapper;
+}
+
+function check() {
+  const mark = document.createElement("div");
+  mark.className = "card__check";
+  mark.setAttribute("aria-hidden", "true");
+  mark.textContent = "+";
+  return mark;
+}
+
+function stepper(item) {
+  const wrap = document.createElement("div");
+  wrap.className = "stepper";
+
+  const minus = document.createElement("button");
+  minus.type = "button";
+  minus.className = "stepper__btn";
+  minus.textContent = "−";
+  minus.setAttribute("aria-label", `Remove one ${item.name}`);
+  minus.dataset.control = "minus";
+  minus.addEventListener("click", () => changeQty(item.id, -1));
+
+  const qty = document.createElement("span");
+  qty.className = "stepper__qty";
+  qty.textContent = String(basket.get(item.id));
+
+  const plus = document.createElement("button");
+  plus.type = "button";
+  plus.className = "stepper__btn";
+  plus.textContent = "+";
+  plus.setAttribute("aria-label", `Add one ${item.name}`);
+  plus.dataset.control = "plus";
+  plus.addEventListener("click", () => changeQty(item.id, 1));
+
+  wrap.append(minus, qty, plus);
+  return wrap;
+}
+
+function renderCatalogue(activeId) {
+  el.catalogue.replaceChildren(
+    ...CONFIG.categories.map((category) => {
+      const panel = document.createElement("div");
+      panel.className = "card-list";
+      panel.id = `panel-${category.id}`;
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", `tab-${category.id}`);
+      panel.hidden = category.id !== activeId;
+      if (!category.items.length) {
+        const empty = document.createElement("p");
+        empty.className = "empty";
+        empty.textContent = "Nothing here yet — check the other categories.";
+        panel.append(empty);
+      } else {
+        panel.append(...category.items.map(card));
+      }
+      return panel;
+    })
+  );
+}
+
+function renderBasket() {
+  const count = itemCount();
+  const items = itemsTotal();
+  const fees = count ? feeTotal() : 0;
+
+  el.count.textContent = count === 1 ? "1 item selected" : `${count} items selected`;
+  el.total.textContent = money(items + fees);
+  el.total.classList.remove("pop");
+  if (count) {
+    void el.total.offsetWidth;
+    el.total.classList.add("pop");
+  }
+
+  el.basket.hidden = count === 0;
+  el.basketLabel.textContent = count === 1 ? "1 item in basket" : `${count} items in basket`;
+
+  const lines = [];
+  basket.forEach((qty, id) => {
+    const item = itemIndex.get(id);
+    lines.push({
+      label: `${qty}× ${item.name}`,
+      value: item.price ? money(item.price * qty) : item.note || "On quote",
+    });
+  });
+  (CONFIG.fees || []).forEach((fee) => {
+    if (count) lines.push({ label: fee.label, value: money(fee.amount), fee: true });
+  });
+
+  el.basketLines.replaceChildren(
+    ...lines.map((line) => {
+      const row = document.createElement("div");
+      row.className = line.fee ? "basket__line basket__line--fee" : "basket__line";
+      const label = document.createElement("span");
+      label.textContent = line.label;
+      const value = document.createElement("span");
+      value.textContent = line.value;
+      row.append(label, value);
+      return row;
+    })
+  );
+
+  const belowMinimum = CONFIG.minimumOrder && items > 0 && items < CONFIG.minimumOrder;
+  el.cta.disabled = count === 0 || belowMinimum;
+  if (!count) {
+    el.hint.textContent = labels.emptyHint || "Tap an item to start your order.";
+  } else if (belowMinimum) {
+    const scope = feeTotal() ? " before fees" : "";
+    el.hint.textContent = `Minimum order is ${money(CONFIG.minimumOrder)}${scope} — add ${money(
+      CONFIG.minimumOrder - items
+    )} more.`;
+  } else {
+    el.hint.textContent = "";
+  }
+}
+
+/* ---------- state ---------- */
+
+function selectCategory(categoryId) {
+  Array.from(el.tabs.children).forEach((tab) => {
+    const active = tab.id === `tab-${categoryId}`;
+    tab.setAttribute("aria-selected", String(active));
+    tab.tabIndex = active ? 0 : -1;
+  });
+  Array.from(el.catalogue.children).forEach((panel) => {
+    panel.hidden = panel.id !== `panel-${categoryId}`;
+  });
+  el.catalogue.scrollTop = 0;
+}
+
+function onTabKeydown(event) {
+  const tabs = Array.from(el.tabs.children);
+  const current = tabs.findIndex((tab) => tab.getAttribute("aria-selected") === "true");
+  const offset = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+  if (!offset) return;
+  event.preventDefault();
+  const next = tabs[(current + offset + tabs.length) % tabs.length];
+  selectCategory(next.id.replace("tab-", ""));
+  next.focus();
+}
+
+function activeCategoryId() {
+  const active = Array.from(el.tabs.children).find(
+    (tab) => tab.getAttribute("aria-selected") === "true"
+  );
+  return active ? active.id.replace("tab-", "") : CONFIG.categories[0].id;
+}
+
+/* Re-rendering a category drops focus, so put it back where the user left it. */
+function focusTarget() {
+  const focused = document.activeElement;
+  const card = focused && focused.closest ? focused.closest(".card") : null;
+  if (!card) return null;
+  return { itemId: card.dataset.itemId, control: focused.dataset.control || "main" };
+}
+
+function restoreFocus(target) {
+  if (!target) return;
+  const card = el.catalogue.querySelector(`[data-item-id="${target.itemId}"]`);
+  if (!card) return;
+  const next =
+    card.querySelector(`[data-control="${target.control}"]`) || card.querySelector(".card__main");
+  if (next) next.focus();
+}
+
+function refreshCards() {
+  const target = focusTarget();
+  renderCatalogue(activeCategoryId());
+  renderBasket();
+  restoreFocus(target);
+  save();
+}
+
+function toggleItem(itemId) {
+  if (basket.has(itemId)) {
+    basket.delete(itemId);
+  } else {
+    basket.set(itemId, 1);
+  }
+  refreshCards();
+}
+
+function changeQty(itemId, delta) {
+  const next = (basket.get(itemId) || 0) + delta;
+  if (next <= 0) {
+    basket.delete(itemId);
+  } else {
+    basket.set(itemId, Math.min(next, 99));
+  }
+  refreshCards();
+}
+
+function save() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(basket.entries())));
+  } catch (error) {
+    /* private mode — basket simply will not persist */
+  }
+}
+
+function restore() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    stored.forEach(([id, qty]) => {
+      const item = itemIndex.get(id);
+      if (item && item.available !== false && Number.isFinite(qty) && qty > 0) {
+        basket.set(id, Math.min(qty, 99));
+      }
+    });
+  } catch (error) {
+    /* corrupt storage — start with an empty basket */
+  }
+}
+
+/* ---------- checkout ---------- */
+
+function orderReference() {
+  return Math.random().toString(36).slice(2, 6).toUpperCase();
+}
+
+function buildMessage() {
+  const lines = [CONFIG.whatsapp.greeting, ""];
+  basket.forEach((qty, id) => {
+    const item = itemIndex.get(id);
+    const value = item.price ? money(item.price * qty) : item.note || "On quote";
+    lines.push(`• ${qty}× ${item.name} — ${value}`);
+  });
+  (CONFIG.fees || []).forEach((fee) => lines.push(`• ${fee.label} — ${money(fee.amount)}`));
+  lines.push("", `Total: ${money(itemsTotal() + feeTotal())}`, `Ref: #${orderReference()}`);
+  if (CONFIG.whatsapp.closing) lines.push("", CONFIG.whatsapp.closing);
+  return lines.join("\n");
+}
+
+function checkout() {
+  if (!basket.size) return;
+  const url = whatsappLink(buildMessage());
+  if (!url) {
+    el.hint.textContent = "No WhatsApp number configured yet.";
+    return;
+  }
+  window.open(url, "_blank", "noopener");
+}
+
+/* ---------- boot ---------- */
+
+applyBranding();
+el.cta.firstChild.textContent = labels.cta || "Order on WhatsApp";
+renderSocials(el.socials);
+renderRatingLink(el.rating);
+renderTabs();
+restore();
+renderCatalogue(CONFIG.categories[0].id);
+renderBasket();
+
+el.cta.addEventListener("click", checkout);
+el.basketToggle.addEventListener("click", () => {
+  const expanded = el.basketToggle.getAttribute("aria-expanded") === "true";
+  el.basketToggle.setAttribute("aria-expanded", String(!expanded));
+  el.basketLines.hidden = expanded;
+});
+
+    </script>
+
+    <script>
+    (() => {
+        const params = new URLSearchParams(location.search);
+        const go = (key, value) => {
+            params.set(key, value);
+            location.search = params.toString();
+        };
+        const fill = (id, values, current, key) => {
+            const select = document.getElementById(id);
+            values.forEach((value) => {
+                const option = document.createElement("option");
+                option.value = value;
+                option.textContent = value[0].toUpperCase() + value.slice(1);
+                option.selected = value === current;
+                select.append(option);
+            });
+            select.addEventListener("change", (event) => go(key, event.target.value));
+        };
+        fill("pick-preset", Object.keys(PRESETS), params.get("preset") || CLIENT, "preset");
+        fill("pick-theme", ["cyber", "luxe", "artisan"], document.documentElement.dataset.theme, "theme");
+    })();
+    </script>
+</body>
+</html>
