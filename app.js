@@ -1,16 +1,13 @@
 /*
  * Rendering + basket state. No business data lives in this file.
  */
-const STORAGE_KEY = "vae-basket-v1";
+/* Scoped per business so previewing another preset never inherits its basket. */
+const STORAGE_KEY = `vae-basket-v1:${CONFIG.business.name}`;
 const basket = new Map(); // itemId -> quantity
 
 const el = {
-  root: document.documentElement,
-  logo: document.getElementById("logo"),
-  name: document.getElementById("business-name"),
-  tagline: document.getElementById("tagline"),
-  badge: document.getElementById("status-badge"),
-  badgeText: document.getElementById("status-text"),
+  socials: document.getElementById("socials"),
+  rating: document.getElementById("rating-link"),
   tabs: document.getElementById("tabs"),
   catalogue: document.getElementById("catalogue"),
   basket: document.getElementById("basket"),
@@ -23,35 +20,14 @@ const el = {
   hint: document.getElementById("hint"),
 };
 
+const labels = CONFIG.labels || {};
+
 const itemIndex = new Map();
 CONFIG.categories.forEach((category) =>
   category.items.forEach((item) => itemIndex.set(item.id, { ...item, category: category.label }))
 );
 
 /* ---------- helpers ---------- */
-
-function money(amount) {
-  const { symbol, locale, decimals } = CONFIG.currency;
-  return `${symbol}${amount.toLocaleString(locale, {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
-  })}`;
-}
-
-function initials(name) {
-  return name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((word) => word[0].toUpperCase())
-    .join("");
-}
-
-function resolveTheme() {
-  const requested = new URLSearchParams(location.search).get("theme");
-  const themes = ["cyber", "luxe", "artisan"];
-  return themes.includes(requested) ? requested : CONFIG.theme;
-}
 
 function feeTotal() {
   return (CONFIG.fees || []).reduce((sum, fee) => sum + fee.amount, 0);
@@ -74,38 +50,6 @@ function itemCount() {
 }
 
 /* ---------- rendering ---------- */
-
-function applyBranding() {
-  const { business } = CONFIG;
-  el.root.dataset.theme = resolveTheme();
-  document.title = business.pageTitle || business.name;
-  el.name.textContent = business.name;
-  el.tagline.textContent = business.tagline;
-  el.badgeText.textContent = business.status;
-  el.badge.dataset.tone = business.statusTone || "open";
-  el.badge.hidden = !business.status;
-
-  if (business.logo) {
-    const img = document.createElement("img");
-    img.src = business.logo;
-    img.alt = `${business.name} logo`;
-    el.logo.replaceChildren(img);
-  } else {
-    el.logo.textContent = initials(business.name);
-  }
-
-  document.querySelectorAll("[data-meta-description]").forEach((tag) => {
-    tag.setAttribute("content", business.description || business.tagline);
-  });
-  document.querySelectorAll("[data-meta-title]").forEach((tag) => {
-    tag.setAttribute("content", business.pageTitle || business.name);
-  });
-  if (business.shareImage) {
-    document.querySelectorAll("[data-meta-image]").forEach((tag) => {
-      tag.setAttribute("content", business.shareImage);
-    });
-  }
-}
 
 function renderTabs() {
   el.tabs.replaceChildren(
@@ -158,8 +102,8 @@ function card(item) {
   }
 
   const price = document.createElement("span");
-  price.className = "card__price";
-  price.textContent = money(item.price);
+  price.className = item.price ? "card__price" : "card__price card__price--quote";
+  price.textContent = item.price ? money(item.price) : item.note || "On quote";
 
   button.append(body, price);
   button.addEventListener("click", () => toggleItem(item.id));
@@ -249,7 +193,10 @@ function renderBasket() {
   const lines = [];
   basket.forEach((qty, id) => {
     const item = itemIndex.get(id);
-    lines.push({ label: `${qty}× ${item.name}`, value: money(item.price * qty) });
+    lines.push({
+      label: `${qty}× ${item.name}`,
+      value: item.price ? money(item.price * qty) : item.note || "On quote",
+    });
   });
   (CONFIG.fees || []).forEach((fee) => {
     if (count) lines.push({ label: fee.label, value: money(fee.amount), fee: true });
@@ -271,7 +218,7 @@ function renderBasket() {
   const belowMinimum = CONFIG.minimumOrder && items > 0 && items < CONFIG.minimumOrder;
   el.cta.disabled = count === 0 || belowMinimum;
   if (!count) {
-    el.hint.textContent = "Tap an item to start your order.";
+    el.hint.textContent = labels.emptyHint || "Tap an item to start your order.";
   } else if (belowMinimum) {
     el.hint.textContent = `Minimum order is ${money(CONFIG.minimumOrder)} — add ${money(
       CONFIG.minimumOrder - items
@@ -389,7 +336,8 @@ function buildMessage() {
   const lines = [CONFIG.whatsapp.greeting, ""];
   basket.forEach((qty, id) => {
     const item = itemIndex.get(id);
-    lines.push(`• ${qty}× ${item.name} — ${money(item.price * qty)}`);
+    const value = item.price ? money(item.price * qty) : item.note || "On quote";
+    lines.push(`• ${qty}× ${item.name} — ${value}`);
   });
   (CONFIG.fees || []).forEach((fee) => lines.push(`• ${fee.label} — ${money(fee.amount)}`));
   lines.push("", `Total: ${money(itemsTotal() + feeTotal())}`, `Ref: #${orderReference()}`);
@@ -399,18 +347,20 @@ function buildMessage() {
 
 function checkout() {
   if (!basket.size) return;
-  const phone = String(CONFIG.whatsapp.phone).replace(/\D/g, "");
-  if (!phone) {
+  const url = whatsappLink(buildMessage());
+  if (!url) {
     el.hint.textContent = "No WhatsApp number configured yet.";
     return;
   }
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(buildMessage())}`;
   window.open(url, "_blank", "noopener");
 }
 
 /* ---------- boot ---------- */
 
 applyBranding();
+el.cta.firstChild.textContent = labels.cta || "Order on WhatsApp";
+renderSocials(el.socials);
+renderRatingLink(el.rating);
 renderTabs();
 restore();
 renderCatalogue(CONFIG.categories[0].id);

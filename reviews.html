@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Reviews</title>
+    <meta name="description" content="" data-meta-description>
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="" data-meta-title>
+    <meta property="og:description" content="" data-meta-description>
+    <meta property="og:image" content="" data-meta-image>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="" data-meta-title>
+    <meta name="twitter:description" content="" data-meta-description>
+    <meta name="twitter:image" content="" data-meta-image>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <main class="app">
+        <!-- Branding -->
+        <header class="hero hero--compact">
+            <div class="hero__glow" aria-hidden="true"></div>
+            <div class="hero__inner">
+                <a class="back" href="index.html" data-keep-params>
+                    <span aria-hidden="true">&larr;</span> Back to menu
+                </a>
+                <div class="hero__logo" id="logo"></div>
+                <h1 class="hero__name" id="business-name"></h1>
+                <p class="hero__tagline" id="tagline"></p>
+            </div>
+        </header>
+
+        <!-- Reviews -->
+        <section class="panel" aria-labelledby="reviews-headline">
+            <div class="reviews" id="reviews">
+                <div class="reviews__head">
+                    <h2 class="reviews__headline" id="reviews-headline"></h2>
+                    <p class="reviews__intro" id="reviews-intro"></p>
+                    <div class="score" id="score" hidden>
+                        <span class="score__value" id="score-value"></span>
+                        <div class="score__meta">
+                            <div id="score-stars"></div>
+                            <span class="score__count" id="score-count"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews__list" id="reviews-list"></div>
+
+                <footer class="reviews__foot">
+                    <div class="socials socials--labelled" id="socials" aria-label="Social links" hidden></div>
+                    <a class="cta cta--link" id="reviews-cta" href="#">
+                        Message us on WhatsApp
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </footer>
+            </div>
+        </section>
+    </main>
+
+    <script src="presets.js"></script>
+    <script src="config.js"></script>
+    <script src="shared.js"></script>
+    <script src="reviews.js"></script>
+</body>
+</html>

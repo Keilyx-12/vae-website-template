@@ -49,9 +49,11 @@ fetch/module restrictions.
 - **Checkout** opens `wa.me/<phone>?text=...`, which redirects to
   `api.whatsapp.com/send/...`. No login needed: read the rendered message text in
   the new tab to assert the itemised lines, `Total:` and `Ref: #XXXX`.
-- On a 390×844 viewport with the basket lines expanded the page grows past the
-  viewport, so the "Order on WhatsApp" CTA may sit below the fold and need a
-  scroll — check reachability rather than assuming it is pinned.
+- The layout is a fixed `100dvh` box: `.app` never grows, the basket line list
+  caps at `26vh` with its own scroll, and the catalogue absorbs the rest. Assert
+  `document.documentElement.scrollHeight === innerHeight` and that the CTA's
+  `getBoundingClientRect().bottom` is inside the viewport with the basket
+  expanded — that combination regressed once already.
 
 ## Devin Secrets Needed
 None — fully local and static.
