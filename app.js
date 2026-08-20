@@ -127,21 +127,28 @@ function renderTabs() {
 }
 
 function card(item) {
+  const selected = basket.has(item.id);
+  const soldOut = item.available === false;
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "card";
+  wrapper.dataset.itemId = item.id;
+  wrapper.dataset.selected = String(selected);
+  if (soldOut) {
+    wrapper.dataset.soldOut = "true";
+  }
+
   const button = document.createElement("button");
   button.type = "button";
-  button.className = "card";
-  button.dataset.itemId = item.id;
-  const selected = basket.has(item.id);
+  button.className = "card__main";
   button.setAttribute("aria-pressed", String(selected));
-  if (item.available === false) {
-    button.disabled = true;
-  }
+  button.disabled = soldOut;
 
   const body = document.createElement("div");
   body.className = "card__body";
   const name = document.createElement("h3");
   name.className = "card__name";
-  name.textContent = item.available === false ? `${item.name} — sold out` : item.name;
+  name.textContent = soldOut ? `${item.name} — sold out` : item.name;
   body.append(name);
   if (item.desc) {
     const desc = document.createElement("p");
@@ -154,13 +161,19 @@ function card(item) {
   price.className = "card__price";
   price.textContent = money(item.price);
 
-  button.append(body, price, selected ? stepper(item) : check());
+  button.append(body, price);
   button.addEventListener("click", () => toggleItem(item.id));
-  return button;
+
+  const aside = document.createElement("div");
+  aside.className = "card__aside";
+  aside.append(selected ? stepper(item) : check());
+
+  wrapper.append(button, aside);
+  return wrapper;
 }
 
 function check() {
-  const mark = document.createElement("span");
+  const mark = document.createElement("div");
   mark.className = "card__check";
   mark.setAttribute("aria-hidden", "true");
   mark.textContent = "+";
@@ -168,7 +181,7 @@ function check() {
 }
 
 function stepper(item) {
-  const wrap = document.createElement("span");
+  const wrap = document.createElement("div");
   wrap.className = "stepper";
 
   const minus = document.createElement("button");
@@ -176,10 +189,8 @@ function stepper(item) {
   minus.className = "stepper__btn";
   minus.textContent = "−";
   minus.setAttribute("aria-label", `Remove one ${item.name}`);
-  minus.addEventListener("click", (event) => {
-    event.stopPropagation();
-    changeQty(item.id, -1);
-  });
+  minus.dataset.control = "minus";
+  minus.addEventListener("click", () => changeQty(item.id, -1));
 
   const qty = document.createElement("span");
   qty.className = "stepper__qty";
@@ -190,10 +201,8 @@ function stepper(item) {
   plus.className = "stepper__btn";
   plus.textContent = "+";
   plus.setAttribute("aria-label", `Add one ${item.name}`);
-  plus.addEventListener("click", (event) => {
-    event.stopPropagation();
-    changeQty(item.id, 1);
-  });
+  plus.dataset.control = "plus";
+  plus.addEventListener("click", () => changeQty(item.id, 1));
 
   wrap.append(minus, qty, plus);
   return wrap;
@@ -304,10 +313,28 @@ function activeCategoryId() {
   return active ? active.id.replace("tab-", "") : CONFIG.categories[0].id;
 }
 
+/* Re-rendering a category drops focus, so put it back where the user left it. */
+function focusTarget() {
+  const focused = document.activeElement;
+  const card = focused && focused.closest ? focused.closest(".card") : null;
+  if (!card) return null;
+  return { itemId: card.dataset.itemId, control: focused.dataset.control || "main" };
+}
+
+function restoreFocus(target) {
+  if (!target) return;
+  const card = el.catalogue.querySelector(`[data-item-id="${target.itemId}"]`);
+  if (!card) return;
+  const next =
+    card.querySelector(`[data-control="${target.control}"]`) || card.querySelector(".card__main");
+  if (next) next.focus();
+}
+
 function refreshCards() {
-  const activeId = activeCategoryId();
-  renderCatalogue(activeId);
+  const target = focusTarget();
+  renderCatalogue(activeCategoryId());
   renderBasket();
+  restoreFocus(target);
   save();
 }
 

@@ -214,37 +214,56 @@ body {
 .card {
   display: flex;
   align-items: center;
-  gap: 14px;
-  width: 100%;
-  padding: 14px 16px;
-  text-align: left;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
   user-select: none;
   transition: border-color 0.18s ease, background 0.18s ease, transform 0.12s ease;
 }
 
-.card:hover:not([disabled]) {
+.card:hover:not([data-sold-out]) {
   border-color: var(--border-strong);
   background: var(--surface-hover);
 }
 
-.card:active:not([disabled]) {
+.card:has(.card__main:active) {
   transform: scale(0.985);
 }
 
-.card[aria-pressed="true"] {
+.card[data-selected="true"] {
   border-color: var(--accent);
   background: var(--accent-soft);
 }
 
-.card[disabled] {
+.card[data-sold-out] {
   opacity: 0.45;
+}
+
+/* The card's own hit area — the stepper is a sibling, never nested inside it. */
+.card__main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card__main[disabled] {
   cursor: not-allowed;
+}
+
+.card__aside {
+  display: flex;
+  align-items: center;
+  padding-right: 14px;
 }
 
 .card__body {
@@ -259,7 +278,7 @@ body {
   overflow-wrap: anywhere;
 }
 
-.card[aria-pressed="true"] .card__name {
+.card[data-selected="true"] .card__name {
   color: var(--accent);
 }
 
@@ -289,7 +308,7 @@ body {
   font-size: 0.7rem;
 }
 
-.card[aria-pressed="true"] .card__check {
+.card[data-selected="true"] .card__check {
   background: var(--accent);
   border-color: var(--accent);
 }
