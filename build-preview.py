@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
-"""Bundle the storefront into self-contained HTML files you can email or double-click.
+"""Bundle the storefront into a drop-anywhere preview folder.
 
-    python3 build-preview.py            # writes preview/index.html + preview/reviews.html
+    python3 build-preview.py            # writes preview/
 
-Each output file has the CSS, JS and favicon inlined, so it needs no web server and no
-sibling files. The storefront also gets a floating niche/theme picker for demos. Ship the
-folder itself (or the two files together) so the links between them keep working.
+Styling and app logic are inlined into each page so there is nothing to serve, but the
+client data stays editable next to them:
+
+    preview/index.html      storefront (with a niche/theme picker for demos)
+    preview/reviews.html    reviews page
+    preview/presets.js      the five example clients
+    preview/config.js       which client is live — edit this
+
+Keep the folder together and open index.html straight off disk.
 """
 import base64
 import pathlib
@@ -15,6 +21,9 @@ ROOT = pathlib.Path(__file__).parent
 OUT = ROOT / "preview"
 
 STYLES = ["themes.css", "app.css"]
+
+# Client data stays as separate files in preview/ so it can be edited without touching HTML.
+EXTERNAL = ["presets.js", "config.js"]
 PICKER = """
     <style>
         .picker {
@@ -71,10 +80,15 @@ def bundle(page: str, scripts: list[str], picker: bool) -> str:
     )
 
     js = "\n".join(
-        f"    /* ---- {name} ---- */\n{(ROOT / name).read_text()}" for name in scripts
+        f"    /* ---- {name} ---- */\n{(ROOT / name).read_text()}"
+        for name in scripts
+        if name not in EXTERNAL
     )
     html = re.sub(r' *<script src="[^"]*"></script>\n', "", html)
-    body = f"    <script>\n{js}\n    </script>\n"
+    kept = "".join(
+        f'    <script src="{name}"></script>\n' for name in scripts if name in EXTERNAL
+    )
+    body = kept + f"    <script>\n{js}\n    </script>\n"
     if picker:
         body = body + PICKER_JS
         html = html.replace("</main>", "</main>\n" + PICKER)
@@ -82,6 +96,9 @@ def bundle(page: str, scripts: list[str], picker: bool) -> str:
 
 
 OUT.mkdir(exist_ok=True)
+for name in EXTERNAL:
+    (OUT / name).write_text((ROOT / name).read_text())
+
 pages = {
     "index.html": (["presets.js", "config.js", "shared.js", "app.js"], True),
     "reviews.html": (["presets.js", "config.js", "shared.js", "reviews.js"], False),
