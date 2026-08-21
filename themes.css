@@ -1,0 +1,69 @@
+/* Theme tokens: add a new client look by adding one [data-theme] block. */
+:root[data-theme="cyber"] {
+  color-scheme: dark;
+  --bg: #0a0a0f;
+  --hero-from: #12121a;
+  --hero-to: #08080c;
+  --panel: rgba(24, 24, 32, 0.4);
+  --surface: rgba(24, 24, 32, 0.6);
+  --surface-hover: rgba(39, 39, 48, 0.75);
+  --bar: rgba(9, 9, 13, 0.85);
+  --border: #27272f;
+  --border-strong: #3f3f4a;
+  --text: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --accent-text: #04121c;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --glow-a: #38bdf8;
+  --glow-b: #a855f7;
+  --radius: 16px;
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root[data-theme="luxe"] {
+  color-scheme: light;
+  --bg: #faf7f2;
+  --hero-from: #faf7f2;
+  --hero-to: #f2ece1;
+  --panel: rgba(255, 255, 255, 0.45);
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-hover: #ffffff;
+  --bar: rgba(255, 255, 255, 0.88);
+  --border: #e6dccb;
+  --border-strong: #cbbda3;
+  --text: #1c1917;
+  --text-muted: #6b6459;
+  --accent: #b48a3c;
+  --accent-hover: #9c742c;
+  --accent-text: #ffffff;
+  --accent-soft: rgba(180, 138, 60, 0.12);
+  --glow-a: #d4af37;
+  --glow-b: #8c6b2f;
+  --radius: 14px;
+  --font: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+}
+
+:root[data-theme="artisan"] {
+  color-scheme: light;
+  --bg: #f5f0e1;
+  --hero-from: #f7f2e4;
+  --hero-to: #ebe5d5;
+  --panel: rgba(255, 255, 255, 0.42);
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-hover: #ffffff;
+  --bar: rgba(255, 255, 255, 0.9);
+  --border: #e3d9c2;
+  --border-strong: #c9b894;
+  --text: #1f1b16;
+  --text-muted: #6a6152;
+  --accent: #c2410c;
+  --accent-hover: #9a3412;
+  --accent-text: #ffffff;
+  --accent-soft: rgba(194, 65, 12, 0.1);
+  --glow-a: #f97316;
+  --glow-b: #e11d48;
+  --radius: 18px;
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Digital Storefront</title>
+    <meta name="description" content="" data-meta-description>
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="" data-meta-title>
+    <meta property="og:description" content="" data-meta-description>
+    <meta property="og:image" content="" data-meta-image>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="" data-meta-title>
+    <meta name="twitter:description" content="" data-meta-description>
+    <meta name="twitter:image" content="" data-meta-image>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <main class="app">
+        <!-- Branding -->
+        <header class="hero">
+            <div class="hero__glow" aria-hidden="true"></div>
+            <div class="hero__inner">
+                <div class="hero__logo" id="logo"></div>
+                <h1 class="hero__name" id="business-name"></h1>
+                <p class="hero__tagline" id="tagline"></p>
+                <div class="badge" id="status-badge">
+                    <span class="badge__dot" aria-hidden="true"></span>
+                    <span id="status-text"></span>
+                </div>
+                <div class="hero__meta">
+                    <a class="rating" id="rating-link" href="reviews.html" hidden></a>
+                    <div class="socials" id="socials" aria-label="Social links" hidden></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Catalogue -->
+        <section class="panel" aria-label="Menu">
+            <div class="tabs" id="tabs" role="tablist" aria-label="Categories"></div>
+            <div class="catalogue" id="catalogue"></div>
+
+            <!-- Checkout -->
+            <div class="checkout">
+                <div class="checkout__inner">
+                    <div class="basket" id="basket" hidden>
+                        <button type="button" class="basket__toggle" id="basket-toggle"
+                                aria-expanded="false" aria-controls="basket-lines">
+                            <span id="basket-label"></span>
+                            <span aria-hidden="true">View</span>
+                        </button>
+                        <div class="basket__lines" id="basket-lines" hidden></div>
+                    </div>
+
+                    <div class="checkout__row">
+                        <div class="summary">
+                            <div class="summary__count" id="count" aria-live="polite"></div>
+                            <div class="summary__total" id="total"></div>
+                        </div>
+                        <button type="button" class="cta" id="cta" disabled>
+                            Order on WhatsApp
+                            <span aria-hidden="true">&rarr;</span>
+                        </button>
+                    </div>
+
+                    <p class="hint" id="hint" aria-live="polite"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="presets.js"></script>
+    <script src="config.js"></script>
+    <script src="shared.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Storefront — Themes</title>
+    <meta name="description" content="Three themes for the one-page WhatsApp order hub: Cyber, Luxe and Artisan.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="themes.css">
+    <style>
+        :root { color-scheme: dark; }
+        body {
+            margin: 0;
+            min-height: 100dvh;
+            display: grid;
+            place-items: center;
+            padding: 32px 20px;
+            background: #0a0a0f;
+            color: #f4f4f5;
+            font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+        }
+        .wrap { width: min(100%, 46rem); text-align: center; }
+        h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: #71717a; margin: 32px 0 12px; }
+        h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); margin: 0 0 8px; letter-spacing: -0.02em; }
+        p.lede { margin: 0 0 28px; color: #a1a1aa; line-height: 1.6; }
+        .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+        a.theme {
+            display: block;
+            padding: 22px 18px;
+            border-radius: 16px;
+            border: 1px solid #27272f;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.15s ease, border-color 0.15s ease;
+        }
+        a.theme:hover { transform: translateY(-2px); border-color: #52525b; }
+        a.theme span { display: block; }
+        .swatch { width: 34px; height: 34px; border-radius: 9999px; margin: 0 auto 12px; }
+        .name { font-weight: 700; font-size: 1.05rem; }
+        .desc { font-size: 0.82rem; color: #a1a1aa; margin-top: 4px; }
+        footer { margin-top: 26px; font-size: 0.8rem; color: #71717a; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Digital Storefront</h1>
+        <p class="lede">One-page order hub with a WhatsApp checkout. One template, any local business — pick a starting point and edit <code>config.js</code>.</p>
+
+        <h2>Example clients</h2>
+        <div class="grid">
+            <a class="theme" href="index.html?preset=salon">
+                <span class="swatch" style="background:#b48a3c"></span>
+                <span class="name">Salon</span>
+                <span class="desc">Hair, nails, lashes — per-service booking</span>
+            </a>
+            <a class="theme" href="index.html?preset=cafe">
+                <span class="swatch" style="background:#c2410c"></span>
+                <span class="name">Cafe</span>
+                <span class="desc">Drinks, bakes, beans — packaging fee, minimum order</span>
+            </a>
+            <a class="theme" href="index.html?preset=detailing">
+                <span class="swatch" style="background:#38bdf8"></span>
+                <span class="name">Car detailing</span>
+                <span class="desc">Packages plus add-ons, callout fee</span>
+            </a>
+            <a class="theme" href="index.html?preset=aircon">
+                <span class="swatch" style="background:#22d3ee"></span>
+                <span class="name">Aircond service</span>
+                <span class="desc">Per-unit servicing, repairs, installation</span>
+            </a>
+            <a class="theme" href="index.html?preset=plumbing">
+                <span class="swatch" style="background:#a3a3a3"></span>
+                <span class="name">Plumber</span>
+                <span class="desc">Urgent callouts, repairs, quote-only items</span>
+            </a>
+            <a class="theme" href="reviews.html?preset=salon">
+                <span class="swatch" style="background:#facc15"></span>
+                <span class="name">Reviews page</span>
+                <span class="desc">Same config, social links and ratings</span>
+            </a>
+        </div>
+
+        <h2>Themes</h2>
+        <div class="grid">
+            <a class="theme" href="index.html?theme=cyber">
+                <span class="swatch" style="background:#38bdf8"></span>
+                <span class="name">Cyber</span>
+                <span class="desc">Dark, high contrast — tech, gyms, detailing</span>
+            </a>
+            <a class="theme" href="index.html?theme=luxe">
+                <span class="swatch" style="background:#b48a3c"></span>
+                <span class="name">Luxe</span>
+                <span class="desc">Serif, gold — salons, clinics, studios</span>
+            </a>
+            <a class="theme" href="index.html?theme=artisan">
+                <span class="swatch" style="background:#c2410c"></span>
+                <span class="name">Artisan</span>
+                <span class="desc">Warm, cream — cafes, bakeries, florists</span>
+            </a>
+        </div>
+        <footer>Mix and match: <code>index.html?preset=aircon&amp;theme=luxe</code></footer>
+    </div>
+</body>
+</html>
